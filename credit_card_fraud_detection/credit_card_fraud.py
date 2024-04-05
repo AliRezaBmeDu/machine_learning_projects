@@ -54,3 +54,10 @@ xTrain, xTest, yTrain, yTest = train_test_split(
 		xData, yData, test_size = 0.2, random_state = 42) 
 
 
+# Building the Random Forest Classifier (RANDOM FOREST) 
+from sklearn.ensemble import RandomForestClassifier 
+# random forest model creation 
+rfc = RandomForestClassifier() 
+rfc.fit(xTrain, yTrain) 
+# predictions 
+yPred = rfc.predict(xTest) 
