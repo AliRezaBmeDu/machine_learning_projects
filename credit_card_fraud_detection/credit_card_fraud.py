@@ -36,3 +36,21 @@ corrmat = data.corr()
 fig = plt.figure(figsize = (12, 9)) 
 sns.heatmap(corrmat, vmax = .8, square = True) 
 plt.show() 
+
+# dividing the X and the Y from the dataset 
+X = data.drop(['Class'], axis = 1) 
+Y = data["Class"] 
+print(X.shape) 
+print(Y.shape) 
+# getting just the values for the sake of processing 
+# (its a numpy array with no columns) 
+xData = X.values 
+yData = Y.values 
+
+# Using Scikit-learn to split data into training and testing sets 
+from sklearn.model_selection import train_test_split 
+# Split the data into training and testing sets 
+xTrain, xTest, yTrain, yTest = train_test_split( 
+		xData, yData, test_size = 0.2, random_state = 42) 
+
+
