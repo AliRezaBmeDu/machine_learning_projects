@@ -33,5 +33,10 @@ data["b"] = (data["High"] / data["Low"]) * data["Volume"]
 df2 = data.tail(30) 
 train = df2[:11] 
 test = df2[-19:] 
-  
-print(train.shape, test.shape) 
+
+
+from statsmodels.tsa.statespace.sarimax import SARIMAX 
+model = SARIMAX(endog=train["Close"], exog=train.drop( 
+	"Close", axis=1), order=(2, 1, 1)) 
+results = model.fit() 
+print(results.summary()) 
