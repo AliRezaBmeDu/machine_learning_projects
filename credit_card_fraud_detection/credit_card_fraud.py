@@ -22,3 +22,17 @@ print(data.shape)
 print(data.describe()) 
 
 
+# Determine number of fraud cases in dataset 
+fraud = data[data['Class'] == 1] 
+valid = data[data['Class'] == 0] 
+outlierFraction = len(fraud)/float(len(valid)) 
+print(outlierFraction) 
+print('Fraud Cases: {}'.format(len(data[data['Class'] == 1]))) 
+print('Valid Transactions: {}'.format(len(data[data['Class'] == 0]))) 
+
+
+# Correlation matrix 
+corrmat = data.corr() 
+fig = plt.figure(figsize = (12, 9)) 
+sns.heatmap(corrmat, vmax = .8, square = True) 
+plt.show() 
