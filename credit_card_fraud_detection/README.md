@@ -24,7 +24,7 @@ The dataset used in this project is obtained from a publicly available dataset c
 
 1. **Dependencies:** Ensure you have the necessary Python libraries installed: NumPy, pandas, matplotlib, seaborn, and scikit-learn.
 
-2. **Dataset:** Download the credit card transaction dataset [creditcard](https://www.kaggle.com/mlg-ulb/creditcardfraud/download and place it in the "datasets" directory.
+2. **Dataset:** Download the credit card transaction dataset [creditcard](https://www.kaggle.com/mlg-ulb/creditcardfraud/download) and place it in the "datasets" directory.
 
 3. **Execution:** Execute the Python script `credit_card_fraud_detection.py` to run the entire pipeline, including data preprocessing, model training, and evaluation.
 
