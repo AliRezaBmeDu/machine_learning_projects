@@ -22,3 +22,16 @@ data.isnull().any()
 # Drop the null values from the dataframe
 data = data.dropna()
 
+data["gap"] = (data["High"] - data["Low"]) * data["Volume"] 
+data["y"] = data["High"] / data["Volume"] 
+data["z"] = data["Low"] / data["Volume"] 
+data["a"] = data["High"] / data["Low"] 
+data["b"] = (data["High"] / data["Low"]) * data["Volume"] 
+
+
+
+df2 = data.tail(30) 
+train = df2[:11] 
+test = df2[-19:] 
+  
+print(train.shape, test.shape) 
