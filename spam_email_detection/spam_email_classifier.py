@@ -92,5 +92,12 @@ def plot_word_cloud(data, typ):
 	plt.axis('off')
 	plt.show()
 
-plot_word_cloud(balanced_data[balanced_data['spam'] == 0], typ='Non-Spam')
-plot_word_cloud(balanced_data[balanced_data['spam'] == 1], typ='Spam')
+plot_word_cloud(balanced_data[balanced_data['label_num'] == 0], typ='Non-Spam')
+plot_word_cloud(balanced_data[balanced_data['label_num'] == 1], typ='Spam')
+
+#train test split
+train_X, test_X, train_Y, test_Y = train_test_split(balanced_data['text'],
+													balanced_data['label_num'],
+													test_size = 0.2,
+													random_state = 42)
+
