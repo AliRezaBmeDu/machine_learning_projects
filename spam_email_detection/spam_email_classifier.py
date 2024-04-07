@@ -29,3 +29,17 @@ warnings.filterwarnings('ignore')
 
 data = pd.read_csv('../datasets/spam_ham_dataset.csv')
 data.head()
+
+# Downsampling to balance the dataset
+ham_msg = data[data.label_num == 0]
+spam_msg = data[data.label_num == 1]
+ham_msg = ham_msg.sample(n=len(spam_msg),
+						random_state=42)
+
+# Plotting the counts of down sampled dataset
+balanced_data = pd.concat([ham_msg, spam_msg]).reset_index(drop=True)
+plt.figure(figsize=(8, 6))
+sns.countplot(data = balanced_data, x='label_num')
+plt.title('Distribution of Ham and Spam email messages after downsampling')
+plt.xlabel('Message types')
+
