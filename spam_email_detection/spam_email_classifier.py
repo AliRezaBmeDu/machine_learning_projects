@@ -101,3 +101,21 @@ train_X, test_X, train_Y, test_Y = train_test_split(balanced_data['text'],
 													test_size = 0.2,
 													random_state = 42)
 
+# Tokenize the text data
+tokenizer = Tokenizer()
+tokenizer.fit_on_texts(train_X)
+
+# Convert text to sequences
+train_sequences = tokenizer.texts_to_sequences(train_X)
+test_sequences = tokenizer.texts_to_sequences(test_X)
+
+# Pad sequences to have the same length
+max_len = 100 # maximum sequence length
+train_sequences = pad_sequences(train_sequences,
+								maxlen=max_len, 
+								padding='post', 
+								truncating='post')
+test_sequences = pad_sequences(test_sequences, 
+							maxlen=max_len, 
+							padding='post', 
+							truncating='post')
