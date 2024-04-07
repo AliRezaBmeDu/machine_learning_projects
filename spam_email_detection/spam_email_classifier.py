@@ -43,3 +43,10 @@ sns.countplot(data = balanced_data, x='label_num')
 plt.title('Distribution of Ham and Spam email messages after downsampling')
 plt.xlabel('Message types')
 
+punctuations_list = string.punctuation
+def remove_punctuations(text):
+	temp = str.maketrans('', '', punctuations_list)
+	return text.translate(temp)
+
+balanced_data['text']= balanced_data['text'].apply(lambda x: remove_punctuations(x))
+balanced_data.head()
