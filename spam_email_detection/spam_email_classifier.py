@@ -50,3 +50,29 @@ def remove_punctuations(text):
 
 balanced_data['text']= balanced_data['text'].apply(lambda x: remove_punctuations(x))
 balanced_data.head()
+
+
+def remove_stopwords(text):
+	stop_words = stopwords.words('english')
+
+	imp_words = []
+
+	# Storing the important words
+	for word in str(text).split():
+		word = word.lower()
+
+		if word not in stop_words:
+			imp_words.append(word)
+
+	output = " ".join(imp_words)
+
+	return output
+
+
+balanced_data['text'] = balanced_data['text'].apply(lambda text: remove_stopwords(text))
+balanced_data.head()
+
+balanced_data['text'] = balanced_data['text'].str.replace('subject', '')
+balanced_data.head()
+
+
