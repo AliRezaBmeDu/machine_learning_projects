@@ -76,3 +76,21 @@ balanced_data['text'] = balanced_data['text'].str.replace('subject', '')
 balanced_data.head()
 
 
+def plot_word_cloud(data, typ):
+	email_corpus = " ".join(data['text'])
+
+	plt.figure(figsize=(7, 7))
+
+	wc = WordCloud(background_color='black',
+				max_words=100,
+				width=800,
+				height=400,
+				collocations=False).generate(email_corpus)
+
+	plt.imshow(wc, interpolation='bilinear')
+	plt.title(f'WordCloud for {typ} emails', fontsize=15)
+	plt.axis('off')
+	plt.show()
+
+plot_word_cloud(balanced_data[balanced_data['spam'] == 0], typ='Non-Spam')
+plot_word_cloud(balanced_data[balanced_data['spam'] == 1], typ='Spam')
