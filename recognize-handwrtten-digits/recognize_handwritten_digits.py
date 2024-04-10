@@ -44,3 +44,15 @@ x = digits.images.reshape((len(digits.images), -1))
 print(x.shape)
 
 
+# Very first 1000 photographs and
+# labels will be used in training.
+x_train = x[:1000]
+y_train = y[:1000]
+
+# The leftover dataset will be utilised to
+# test the network's performance later on.
+x_test = x[1000:]
+y_test = y[1000:]
+
+
+
