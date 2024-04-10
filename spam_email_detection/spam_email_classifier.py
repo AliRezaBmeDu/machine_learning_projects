@@ -119,3 +119,20 @@ test_sequences = pad_sequences(test_sequences,
 							maxlen=max_len, 
 							padding='post', 
 							truncating='post')
+
+# Build the model
+model = tf.keras.models.Sequential()
+model.add(tf.keras.layers.Embedding(input_dim=len(tokenizer.word_index) + 1,
+									output_dim=32
+								))
+model.add(tf.keras.layers.LSTM(16))
+model.add(tf.keras.layers.Dense(32, activation='relu'))
+model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
+
+# Print the model summary
+model.summary()
+
+model.compile(loss = tf.keras.losses.BinaryCrossentropy(from_logits = True),
+			metrics = ['accuracy'],
+			optimizer = 'adam')
+
