@@ -136,3 +136,12 @@ model.compile(loss = tf.keras.losses.BinaryCrossentropy(from_logits = True),
 			metrics = ['accuracy'],
 			optimizer = 'adam')
 
+es = EarlyStopping(patience=3,
+				monitor = 'val_accuracy',
+				restore_best_weights = True)
+
+lr = ReduceLROnPlateau(patience = 2,
+					monitor = 'val_loss',
+					factor = 0.5,
+					verbose = 0)
+
