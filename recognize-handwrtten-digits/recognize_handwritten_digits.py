@@ -55,4 +55,14 @@ x_test = x[1000:]
 y_test = y[1000:]
 
 
+# importing the MLP classifier from sklearn
+from sklearn.neural_network import MLPClassifier
+
+# calling the MLP classifier with specific parameters
+mlp = MLPClassifier(hidden_layer_sizes=(15,),
+					activation='logistic',
+					alpha=1e-4, solver='sgd',
+					tol=1e-4, random_state=1,
+					learning_rate_init=.1,
+					verbose=True)
 
