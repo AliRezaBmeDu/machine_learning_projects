@@ -36,3 +36,11 @@ def plot_multi(i):
 plot_multi(0)
 
 
+# converting the 2 dimensional array to one dimensional array
+y = digits.target
+x = digits.images.reshape((len(digits.images), -1))
+
+# gives the shape of the data
+print(x.shape)
+
+
