@@ -66,3 +66,10 @@ mlp = MLPClassifier(hidden_layer_sizes=(15,),
 					learning_rate_init=.1,
 					verbose=True)
 
+mlp.fit(x_train, y_train)
+
+fig, axes = plt.subplots(1, 1)
+axes.plot(mlp.loss_curve_, 'o-')
+axes.set_xlabel("number of iteration")
+axes.set_ylabel("loss")
+plt.show()
