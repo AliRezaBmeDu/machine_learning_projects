@@ -32,3 +32,13 @@ labels = train_labels
 test_data = test_images
 test_labels = test_labels
 
+def display(i):
+	img = test_data[i]
+	plt.title('label : {}'.format(test_labels[i]))
+	plt.imshow(img.reshape((28, 28)))
+	
+# image in TensorFlow is 28 by 28 px
+display(0)
+
+
+
