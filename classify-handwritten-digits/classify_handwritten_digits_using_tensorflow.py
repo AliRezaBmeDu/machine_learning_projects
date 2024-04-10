@@ -23,3 +23,10 @@ plt.imshow(train_images[0], cmap='gray')
 plt.colorbar()
 plt.grid(False)
 plt.show()
+
+
+data = train_images
+labels = np.asarray(mnist.train.labels, dtype=np.int32)
+test_data = test_images
+test_labels = np.asarray(mnist.test.labels, dtype=np.int32)
+
