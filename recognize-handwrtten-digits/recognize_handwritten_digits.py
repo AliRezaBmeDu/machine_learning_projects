@@ -73,3 +73,6 @@ axes.plot(mlp.loss_curve_, 'o-')
 axes.set_xlabel("number of iteration")
 axes.set_ylabel("loss")
 plt.show()
+
+predictions = mlp.predict(x_test)
+predictions[:50]
