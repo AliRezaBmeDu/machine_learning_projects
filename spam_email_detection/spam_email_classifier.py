@@ -145,3 +145,16 @@ lr = ReduceLROnPlateau(patience = 2,
 					factor = 0.5,
 					verbose = 0)
 
+# Train the model
+history = model.fit(train_sequences, train_Y,
+					validation_data=(test_sequences, test_Y),
+					epochs=20, 
+					batch_size=32,
+					callbacks = [lr, es]
+				)
+
+# Evaluate the model
+test_loss, test_accuracy = model.evaluate(test_sequences, test_Y)
+print('Test Loss :',test_loss)
+print('Test Accuracy :',test_accuracy)
+
