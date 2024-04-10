@@ -25,8 +25,10 @@ plt.grid(False)
 plt.show()
 
 
+
+# Assign data and labels
 data = train_images
-labels = np.asarray(mnist.train.labels, dtype=np.int32)
+labels = train_labels
 test_data = test_images
-test_labels = np.asarray(mnist.test.labels, dtype=np.int32)
+test_labels = test_labels
 
