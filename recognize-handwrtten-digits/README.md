@@ -26,11 +26,11 @@ pip install scikit-learn matplotlib
 ## Usage
 1. Clone the repository:
 ```sh
-git clone https://github.com/yourusername/handwritten-digit-recognition.git
+git clone https://github.com/AliRezaBmeDu/machine_learning_projects.git
 ```
 2. Navigate to the cloned directory:
 ```sh
-cd handwritten-digit-recognition
+cd machine_learning_projects/handwritten-digit-recognition
 ```
 
 3. Run the Python script:
