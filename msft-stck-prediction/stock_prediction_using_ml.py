@@ -19,4 +19,20 @@ microsoft = pd.read_csv('../datasets/MicrosoftStock.csv')
 print(microsoft.head()) 
 
 
+plt.plot(microsoft['date'], 
+		microsoft['open'], 
+		color="blue", 
+		label="open") 
+plt.plot(microsoft['date'], 
+		microsoft['close'], 
+		color="green", 
+		label="close") 
+plt.title("Microsoft Open-Close Stock") 
+plt.legend() 
+
+
+plt.plot(microsoft['date'], 
+		microsoft['volume']) 
+plt.show()
+
 
