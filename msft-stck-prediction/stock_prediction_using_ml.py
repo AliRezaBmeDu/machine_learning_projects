@@ -95,10 +95,34 @@ print(model.summary())
 from keras.metrics import RootMeanSquaredError 
 model.compile(optimizer='adam', 
 			loss='mae', 
-			metrics=RootMeanSquaredError()) 
+			metrics=['RootMeanSquaredError']) 
 
 history = model.fit(X_train, y_train, 
 					epochs=20) 
 
 
+testing = ss[training - 60:, :] 
+x_test = [] 
+y_test = dataset[training:, :] 
+for i in range(60, len(testing)): 
+	x_test.append(testing[i-60:i, 0]) 
+
+x_test = np.array(x_test) 
+X_test = np.reshape(x_test, 
+					(x_test.shape[0], 
+					x_test.shape[1], 1)) 
+
+pred = model.predict(X_test) 
+
+
+train = microsoft[:training] 
+test = microsoft[training:] 
+test['Predictions'] = pred 
+
+plt.figure(figsize=(10, 8)) 
+plt.plot(train['close'], c="b") 
+plt.plot(test[['close', 'Predictions']]) 
+plt.title('Microsoft Stock Close Price') 
+plt.ylabel("Close") 
+plt.legend(['Train', 'Test', 'Predictions']) 
 
