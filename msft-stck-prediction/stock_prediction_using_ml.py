@@ -35,4 +35,46 @@ plt.plot(microsoft['date'],
 		microsoft['volume']) 
 plt.show()
 
+sns.heatmap(microsoft.corr(), 
+			annot=True, 
+			cbar=False) 
+plt.show() 
+
+microsoft['date'] = pd.to_datetime(microsoft['date']) 
+prediction = microsoft.loc[(microsoft['date'] 
+							> datetime(2013, 1, 1)) 
+							& (microsoft['date'] 
+							< datetime(2018, 1, 1))] 
+
+plt.figure(figsize=(10, 10)) 
+plt.plot(microsoft['date'], microsoft['close']) 
+plt.xlabel("Date") 
+plt.ylabel("Close") 
+plt.title("Microsoft Stock Prices") 
+
+# prepare the training set samples 
+msft_close = microsoft.filter(['close']) 
+dataset = msft_close.values 
+training = int(np.ceil(len(dataset) *. 95)) 
+
+# scale the data 
+ss = StandardScaler() 
+ss = ss.fit_transform(dataset) 
+
+train_data = ss[0:int(training), :] 
+
+x_train = [] 
+y_train = [] 
+
+# considering 60 as the batch size, 
+# create the X_train and y_train 
+for i in range(60, len(train_data)): 
+	x_train.append(train_data[i-60:i, 0]) 
+	y_train.append(train_data[i, 0]) 
+
+x_train, y_train = np.array(x_train),\ 
+				np.array(y_train) 
+X_train = np.reshape(x_train, 
+					(x_train.shape[0], 
+					x_train.shape[1], 1)) 
 
