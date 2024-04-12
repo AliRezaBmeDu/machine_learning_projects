@@ -92,4 +92,13 @@ model.add(keras.layers.Dense(1))
 
 print(model.summary()) 
 
+from keras.metrics import RootMeanSquaredError 
+model.compile(optimizer='adam', 
+			loss='mae', 
+			metrics=RootMeanSquaredError()) 
+
+history = model.fit(X_train, y_train, 
+					epochs=20) 
+
+
 
